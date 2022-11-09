@@ -3,6 +3,12 @@ import React from "react";
 import { useReducer } from "react";
 import recipes from "./components/recipes";
 
+const initState = {
+    checkedBoxTrue: "",
+    checkedBoxFalse: "",
+    alert: null,
+};
+
 const reducer = (state, action) => {
     switch (action.type) {
         case "COMPLEATED":
@@ -19,7 +25,7 @@ const reducer = (state, action) => {
 };
 
 function Todos() {
-    const [todos, dispatch] = useReducer(reducer, recipes);
+    const [todos, dispatch] = useReducer(reducer, initState);
 
     const handleCompleate = (todo) => {
         dispatch({ type: "COMPLEATE", id: todo.id });
@@ -33,7 +39,7 @@ function Todos() {
                             type="checkbox"
                             checked={todo.compleate}
                             onChange={() => handleCompleate(todo)}
-                            value={recipes[1]}
+                            value={state.checkedBoxTrue}
                         />
                         {todo.title}
                     </label>
