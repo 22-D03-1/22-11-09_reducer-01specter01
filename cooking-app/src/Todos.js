@@ -43,6 +43,8 @@ function Todos() {
                                 onChange={() => handleCompleate(i)}
                             />
                             {schritt}
+                            initState.checkedBox.push(i)
+                            console.log(initState.checkedBox)
                         </label>
                     ))}
                 </div>
