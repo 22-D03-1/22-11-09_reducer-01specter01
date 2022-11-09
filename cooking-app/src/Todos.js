@@ -37,14 +37,15 @@ function Todos() {
                     <h2>{recipe.name}</h2>
                     {recipe.zubereitung.map((schritt, i) => (
                         <label>
+                          if(input.checkbox === false)
                             <input
                                 type="checkbox"
                                 checked={false}
                                 onChange={() => handleCompleate(i)}
                             />
                             {schritt}
-                            initState.checkedBox.push(i)
-                            console.log(initState.checkedBox)
+                            {/* initState.checkedBox.push(i)
+                            console.log(initState.checkedBox) */}
                         </label>
                     ))}
                 </div>
