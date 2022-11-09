@@ -4,10 +4,10 @@ import { useReducer } from "react";
 import recipes from "./components/recipes";
 
 const initState = {
-    checkedBoxTrue: "",
-    checkedBoxFalse: "",
+    checkedBox: [],
     alert: null,
 };
+// array von checkedbox i hinzufügen
 
 const reducer = (state, action) => {
     switch (action.type) {
@@ -25,24 +25,26 @@ const reducer = (state, action) => {
 };
 
 function Todos() {
-    const [todos, dispatch] = useReducer(reducer, initState);
+    const [state, dispatch] = useReducer(reducer, initState);
 
-    const handleCompleate = (todo) => {
-        dispatch({ type: "COMPLEATE", id: todo.id });
+    const handleCompleate = (i) => {
+        dispatch({ type: "COMPLEATE", index: i });
     };
     return (
         <>
-            {todos.map((todo) => (
-                <div key={todo.id}>
-                    <label>
-                        <input
-                            type="checkbox"
-                            checked={todo.compleate}
-                            onChange={() => handleCompleate(todo)}
-                            value={todos.checkedBoxTrue}
-                        />
-                        {todo.title}
-                    </label>
+            {recipes.map((recipe) => (
+                <div key={recipe.id}>
+                    <h2>{recipe.name}</h2>
+                    {recipe.zubereitung.map((schritt, i) => (
+                        <label>
+                            <input
+                                type="checkbox"
+                                checked={false}
+                                onChange={() => handleCompleate(i)}
+                            />
+                            {schritt}
+                        </label>
+                    ))}
                 </div>
             ))}
         </>
