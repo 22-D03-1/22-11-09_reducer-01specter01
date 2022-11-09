@@ -39,7 +39,7 @@ function Todos() {
                             type="checkbox"
                             checked={todo.compleate}
                             onChange={() => handleCompleate(todo)}
-                            value={state.checkedBoxTrue}
+                            value={todos.checkedBoxTrue}
                         />
                         {todo.title}
                     </label>
